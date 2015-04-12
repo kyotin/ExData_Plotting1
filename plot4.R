@@ -2,6 +2,8 @@ myData <- read.csv("household_power_consumption.txt",header=TRUE,sep=";",na.stri
 fromDate <- as.Date("2007-02-01","%Y-%m-%d")
 endDate <- as.Date("2007-02-02","%Y-%m-%d")
 myDataSubset <- myData[which(as.Date(myData$Date,"%d/%m/%Y") >= fromDate & as.Date(myData$Date,"%d/%m/%Y") <= endDate), ]
+
+png(file = "plot4.png",width = 480, height = 480, units = "px")
 par(mfrow = c(2, 2))
 with(myDataSubset, {
 	#PLOT 1,1
@@ -27,5 +29,5 @@ with(myDataSubset, {
 			xlab="datetime", ylab="Global_reactive_power", type="l")
 	
 })
-dev.copy(png, file = "plot4.png",width = 480, height = 480, units = "px")
+
 dev.off()
